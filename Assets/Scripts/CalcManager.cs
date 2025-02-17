@@ -5,58 +5,61 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CalcManager : MonoBehaviour
+namespace AriaOfPain
 {
-    [SerializeField] private TMP_Text inputDisplay;
-    [SerializeField] private TMP_Text outputDisplay;
-    
-    private string inputString;
-
-    void Start()
+    public class CalcManager : MonoBehaviour
     {
-        ClearInput();
-    }
+        [SerializeField] private TMP_Text inputDisplay;
+        [SerializeField] private TMP_Text outputDisplay;
+        
+        private string inputString;
 
-    public void AddDigit(string digit)
-    {
-        if(inputDisplay.text == "0")
+        void Start()
         {
-            inputDisplay.text = digit;
+            ClearInput();
         }
-        else
+
+        public void AddDigit(string digit)
         {
-            inputDisplay.text = inputDisplay.text + digit;
+            if(inputDisplay.text == "0")
+            {
+                inputDisplay.text = digit;
+            }
+            else
+            {
+                inputDisplay.text = inputDisplay.text + digit;
+            }
+            UpdateDisplay();
         }
-        UpdateDisplay();
-    }
 
-    public void ClearInput()
-    {
-        inputDisplay.text = "0";
-        UpdateDisplay();
-    }
-
-    public void ClearLastDigit()
-    {
-        inputDisplay.text = inputDisplay.text.Remove(inputDisplay.text.Length - 1);
-        if(inputDisplay.text == "")
+        public void ClearInput()
         {
             inputDisplay.text = "0";
+            UpdateDisplay();
         }
-        UpdateDisplay();
-    }
 
-    private void UpdateDisplay()
-    {
-        int iValue = 0;
-        int fValue = 0;
-        int.TryParse(inputDisplay.text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out iValue);
-
-        while(iValue > 0)
+        public void ClearLastDigit()
         {
-            fValue += iValue;
-            iValue--;
+            inputDisplay.text = inputDisplay.text.Remove(inputDisplay.text.Length - 1);
+            if(inputDisplay.text == "")
+            {
+                inputDisplay.text = "0";
+            }
+            UpdateDisplay();
         }
-        outputDisplay.text = fValue + "";
+
+        private void UpdateDisplay()
+        {
+            int iValue = 0;
+            int fValue = 0;
+            int.TryParse(inputDisplay.text, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out iValue);
+
+            while(iValue > 0)
+            {
+                fValue += iValue;
+                iValue--;
+            }
+            outputDisplay.text = fValue + "";
+        }
     }
 }
