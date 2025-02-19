@@ -7,7 +7,7 @@ using TMPro;
 
 namespace AriaOfPain
 {
-    public class CalcManager : MonoBehaviour
+    public class AriaOfPainManager : MonoBehaviour
     {
         [SerializeField] private TMP_Text inputDisplay;
         [SerializeField] private TMP_Text outputDisplay;
