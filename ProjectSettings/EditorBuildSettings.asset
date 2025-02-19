@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/AriaOfPain.unity
+    path: Assets/AriaOfPain/Scenes/AriaOfPain.unity
     guid: 512daaa140af20141bbe4f4171fcaf23
   m_configObjects: {}
